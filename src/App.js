@@ -1,7 +1,8 @@
 import {Routes, Route, Link} from 'react-router-dom';
 
-import {Navbar} from './components/Navbar';
+import { Navbar } from './components/Navbar';
 import { Homepage } from './components/Homepage';
+import { Notfound } from './components/Notfound';
 import './App.css';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           {/* Need to create additional routes for category names, 
           which when selected will send a dispatch, change the posts state, 
           and change the URL, causing the componant to render */}
+          <Route path='*' element={<Notfound />} /> 
        </Routes>
     </div>
 
