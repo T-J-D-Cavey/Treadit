@@ -40,11 +40,17 @@ export function Posts() {
           <span>    {timeConverter(element.data.created)}</span></p>
         </div>
         <h3 className='postSection'><a href={`https://www.reddit.com${element.data.permalink}`} target="_blank">{element.data.title}</a></h3>
-        {element.data.post_hint === 'image' ? 
         
+        
+        {element.data.is_video ? 
+        <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><img src={videoIcon} alt='' className='postImage'/></a>
+        : <span className='displayNone'>hidden</span>}
+        {element.data.is_gallery ? <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><img src={element.data.thumbnail} alt='' className='postThumbnail'/></a>
+        : <span className='displayNone'>hidden</span>}
+        {element.data.post_hint === 'image' ? 
         <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><img src={element.data.url} alt='' className='postImage'/></a> 
-        : 
-        <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><p>{element.data.selftext}</p></a> }
+        : <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><p>{element.data.selftext}</p></a>}
+
 
         <div className='flexboxContainer postSection'>
           {/* Will add a comments box svg here */}
@@ -55,35 +61,9 @@ export function Posts() {
         </div>
       </div> )}
     </div>
-  )  
-   
-
-}
-
-
-
-// return (
-//   <div className='flexItem postContainer'>
-//     {list.map((element, index) => 
-//     <div key={index}  className='postContainer'>
-//       <div className='flexboxContainer postSection'>
-//         <p>Posted by <span><a href={`https://www.reddit.com/user/${element.data.author}/`} target="_blank">{element.data.author}</a></span>
-//         <span>    {timeConverter(element.data.created)}</span></p>
-//       </div>
-//       <h3 className='postSection'><a href={`https://www.reddit.com${element.data.permalink}`} target="_blank">{element.data.title}</a></h3>
-//       {element.data.post_hint === 'image' ? 
-      
-//       <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><img src={element.data.url} alt='' className='postImage'/></a> 
-//       : 
-//       <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><p>{element.data.selftext}</p></a> }
-
-//       <div className='flexboxContainer postSection'>
-//         {/* Will add a comments box svg here */}
-//         <p>{element.data.num_comments === 1 ? 
-//         `${element.data.num_comments} comment` 
-//         : 
-//         `${element.data.num_comments} comments`}<span> {element.data.ups} upvotes</span></p>
-//       </div>
-//     </div> )}
-//   </div>
-// )
+  ) 
+     
+  
+  }
+  
+  

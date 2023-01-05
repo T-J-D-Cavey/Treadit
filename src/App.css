@@ -2,3 +2,12 @@
 .postImage {
     width: 50%;
 }
+
+.postThumbnail {
+    width: 25%;
+}
+
+.displayNone {
+    display: none;
+}
+
