@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+// Using awaits:
 export const getPosts = createAsyncThunk(
     'posts/getPosts',
     async (url) => {
-        const response = await fetch(`https://www.reddit.com/${url}.json`);
+        const response = await fetch(`https://www.reddit.com/${url}.json?limit=20`);
         const data = await response.json();
         const posts = data.data.children;
             return posts;
@@ -36,6 +37,7 @@ const postsSlice = createSlice({
             state.testState = true;
         }
     },
+    // I need to convert this into 'builder' syntax:
     extraReducers: {
         [getPosts.pending]: (state) => {
             state.status = 'loading'
@@ -50,12 +52,12 @@ const postsSlice = createSlice({
     }
 });
 
-// export const listSelector = (state) => {
-//     return state.posts.list;
-// }
+export const listSelector = (state) => {
+    return state.posts.list;
+}
 
-// export const statusSelector = (state) => {
-//     return state.posts.status;
-// }
+export const statusSelector = (state) => {
+    return state.posts.status;
+}
 
-export const {postsReducer} = postsSlice.reducer;
+export const postsReducer = postsSlice.reducer;

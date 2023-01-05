@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 export function Notfound() {
     
 
-    // Changes URL to redirect visitor to the homepage after 3 seconds:
+    // Changes URL to redirect visitor to the mainpage after 3 seconds:
     const navigate = useNavigate();
     useEffect(() => {
         const interval = setInterval(() => {
@@ -14,7 +14,7 @@ export function Notfound() {
     }, [])
 
     return (
-        <div>Not found component</div>
+        <div>Page not found component</div>
     )
 }
 

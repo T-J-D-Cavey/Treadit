@@ -1,7 +1,7 @@
 import {Routes, Route, Link} from 'react-router-dom';
 
 import { Navbar } from './components/Navbar';
-import { Homepage } from './components/Homepage';
+import { Mainpage } from './components/mainpage/Mainpage';
 import { Notfound } from './components/Notfound';
 import './App.css';
 
@@ -10,7 +10,7 @@ function App() {
     <div>
         <Navbar />
         <Routes>
-          <Route path='/' element={<Homepage />} />
+          <Route path='/' element={<Mainpage />} />
           {/* Need to create additional routes for category names, 
           which when selected will send a dispatch, change the posts state, 
           and change the URL, causing the componant to render */}
