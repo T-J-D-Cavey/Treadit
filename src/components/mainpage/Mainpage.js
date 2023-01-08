@@ -1,20 +1,19 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import {Posts} from '../posts/Posts';
 import {FailedToLoad} from './FailedToLoad';
 import {Loading} from './Loading';
-import {getPosts, statusSelector} from '../../Redux/postsSlice';
+import {statusSelector} from '../../Redux/postsSlice';
 
 export function Mainpage() {
 
     const status = useSelector(statusSelector);
 
     // Fetches the default data (hiking subreddit) and changes the state on mount:
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getPosts('r/hiking/'))
-    }, []);
+    // const dispatch = useDispatch();
+    // useEffect(() => {
+    //     dispatch(getPosts('r/hiking/'))
+    // }, []);
 
 
     // Renders different components depending on status state:
@@ -39,12 +38,4 @@ export function Mainpage() {
             </div>
         )
     }
-
-
-
-    // return (
-    //     <div className='flexboxContainer'>
-    //         <Posts />
-    //     </div>
-    // )
 }

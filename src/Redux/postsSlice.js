@@ -1,40 +1,50 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+
 // Using awaits:
 export const getPosts = createAsyncThunk(
     'posts/getPosts',
     async (url) => {
-        const response = await fetch(`https://www.reddit.com/${url}.json?limit=20`);
+        const response = await fetch(url);
         const data = await response.json();
         const posts = data.data.children;
             return posts;
     }
 )
-// Without awaits:
-// export const getPosts = createAsyncThunk(
-//     'posts/getPosts',
-//     async (url) => {
-//         return fetch(`https://www.reddit.com/${url}.json`)
-//         .then(response => response.json())
-//         .then(posts => {
-//             const listArray = posts.data.children;
-//             return listArray;
-//         })
-//     }
-// )
+  
+// subreddit = 'python'
+// limit = 100
+// timeframe = 'month' #hour, day, week, month, year, all
+// listing = 'top' # controversial, best, hot, new, random, rising, top
+  
+// base_url = f'https://www.reddit.com/r/{subreddit}/{listing}.json?limit={limit}&t={timeframe}'
 
 const postsSlice = createSlice({
     name: 'posts',
     initialState: {
         list: [],
         status: null,
-        // creating a fake state to make a reducer to try and fix error:
-        testState: false
+        subreddit: 'r/hiking',
+        listing: 'hot',
+        limit: 30,
+        timeframe: 'week',
+        searchTerm: null
     },
-    // creating a fake reducer to try and fix error:
     reducers: {
-        changeTestState: (state) => {
-            state.testState = true;
+        changeSubreddit: (state, action) => {
+            state.subreddit = action.payload;
+        },
+        changeListing: (state, action) => {
+            state.listing = action.payload;
+        },
+        changeLimit: (state, action) => {
+            state.limit = action.payload;
+        },
+        changeTimeframe: (state, action) => {
+            state.timeframe = action.payload;
+        },
+        setSearchTerm: (state, action) => {
+            state.searchTerm = action.payload;
         }
     },
     // I need to convert this into 'builder' syntax:
@@ -59,5 +69,29 @@ export const listSelector = (state) => {
 export const statusSelector = (state) => {
     return state.posts.status;
 }
+
+export const subredditSelector = (state) => {
+    return state.posts.subreddit;
+}
+
+export const listingSelector = (state) => {
+    return state.posts.listing;
+}
+
+export const limitSelector = (state) => {
+    return state.posts.limit;
+}
+
+export const timeframeSelector = (state) => {
+    return state.posts.timeframe;
+}
+
+export const searchTermSelector = (state) => {
+    return state.posts.searchTerm;
+}
+
+export const {changeSubreddit, changeListing, changeLimit, changeTimeframe, setSearchTerm} = postsSlice.actions;
+
+
 
 export const postsReducer = postsSlice.reducer;
