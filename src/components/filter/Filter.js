@@ -5,29 +5,31 @@ import {
     getPosts, subredditSelector, listingSelector,
     limitSelector, timeframeSelector, searchTermSelector,
     changeSubreddit, changeListing, changeLimit,
-    changeTimeframe, setSearchTerm
+    changeTimeframe
 } from "../../Redux/postsSlice";
+import {FilterForm} from "./FilterForm";
 
 export function Filter() {
     const subreddit = useSelector(subredditSelector);
     const listing = useSelector(listingSelector);
     const limit = useSelector(limitSelector);
     const timeframe = useSelector(timeframeSelector);
-    const searchTerm = useSelector(searchTermSelector);
+
+    console.log(subreddit)
 
     // Fetches the default data from initial state on mount:
     const dispatch = useDispatch();
-    useEffect(() => {
+    const callGetPosts = () => {
         dispatch(getPosts(
             `https://www.reddit.com/${subreddit}/${listing}.json?limit=${limit}&t=${timeframe}`))
+    }
+    useEffect(() => {
+        callGetPosts()
     }, []);
-
+    
     return (
         <div className='postContainer flexboxContainer'>
-           <p>subreddit</p>
-           <p>listing</p>
-           <p>limit</p>
-           <p>searchTerm</p>
+           <FilterForm callGetPosts={callGetPosts} />
         </div>
     )
 }

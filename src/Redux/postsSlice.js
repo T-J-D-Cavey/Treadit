@@ -11,13 +11,6 @@ export const getPosts = createAsyncThunk(
             return posts;
     }
 )
-  
-// subreddit = 'python'
-// limit = 100
-// timeframe = 'month' #hour, day, week, month, year, all
-// listing = 'top' # controversial, best, hot, new, random, rising, top
-  
-// base_url = f'https://www.reddit.com/r/{subreddit}/{listing}.json?limit={limit}&t={timeframe}'
 
 const postsSlice = createSlice({
     name: 'posts',

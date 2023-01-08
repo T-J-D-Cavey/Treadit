@@ -9,13 +9,6 @@ export function Mainpage() {
 
     const status = useSelector(statusSelector);
 
-    // Fetches the default data (hiking subreddit) and changes the state on mount:
-    // const dispatch = useDispatch();
-    // useEffect(() => {
-    //     dispatch(getPosts('r/hiking/'))
-    // }, []);
-
-
     // Renders different components depending on status state:
     if (status === 'failed') {
         return (
