@@ -1,20 +1,43 @@
 import { useDispatch, useSelector} from 'react-redux';
 
-import {changeSubreddit, subredditSelector} from '../../Redux/postsSlice';
+import {
+    subredditSelector, listingSelector,
+    limitSelector, timeframeSelector, changeSubreddit, 
+    changeListing, changeLimit, changeTimeframe
+} from '../../Redux/postsSlice';
 
 export function FilterForm({callGetPosts}) {
 
     const dispatch = useDispatch();
     const subreddit = useSelector(subredditSelector);
+    const listing = useSelector(listingSelector);
+    const limit = useSelector(limitSelector);
+    const timeframe = useSelector(timeframeSelector);
 
+// Changes subreddit state:
    const subredditOnChange = (event) => {
-    event.preventDefault();
-    dispatch(changeSubreddit(event.target.value))
+     event.preventDefault();
+     dispatch(changeSubreddit(event.target.value))
    }
-
-   const handleSubmit = (event) => {
-    event.preventDefault();
-    callGetPosts();
+// Changes listing state:
+   const listingOnChange = (event) => {
+     event.preventDefault();
+     dispatch(changeListing(event.target.value))
+   }
+// Changes limit state:
+    const limitOnChange = (event) => {
+     event.preventDefault();
+     dispatch(changeLimit(event.target.value))
+   }
+// Changes timeframe state:
+    const timeframeOnChange = (event) => {
+        event.preventDefault();
+        dispatch(changeTimeframe(event.target.value))
+   }
+// Invokes getPosts to get data from reddit.json based on latest state:
+    const handleSubmit = (event) => {
+     event.preventDefault();
+     callGetPosts();
    }
 
     return (
@@ -43,6 +66,27 @@ export function FilterForm({callGetPosts}) {
                   <option>r/Trailmeals</option>
                   <option>r/HikerTrashMeals</option>
                   <option>r/Survival</option>
+              </select>
+              <label htmlFor='listing'>Listing:</label>
+              <select id='listing' value={listing} onChange={listingOnChange}>
+                  <option>hot</option>
+                  <option>top</option>
+                  <option>new</option>
+                  <option>controversial</option>
+              </select>
+              <label htmlFor='limit'>How many:</label>
+              <select id='limit' value={limit} onChange={limitOnChange}>
+                  <option>30</option>
+                  <option>60</option>
+                  <option>100</option>
+                  <option>200</option>
+              </select>
+              <label htmlFor='timeframe'>Since:</label>
+              <select id='timeframe' value={timeframe} onChange={timeframeOnChange}>
+                  <option>week</option>
+                  <option>month</option>
+                  <option>year</option>
+                  <option>day</option>
               </select>
               <button type='submit'>Submit</button>
             </form>

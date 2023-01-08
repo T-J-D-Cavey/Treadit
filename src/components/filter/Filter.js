@@ -17,7 +17,8 @@ export function Filter() {
 
     console.log(subreddit)
 
-    // Fetches the default data from initial state on mount:
+    // Fetches default data from initial state on mount, 
+    // and whenever the filter form is submitted:
     const dispatch = useDispatch();
     const callGetPosts = () => {
         dispatch(getPosts(

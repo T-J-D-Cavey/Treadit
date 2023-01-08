@@ -8,8 +8,6 @@ export function Posts() {
 
   const list = useSelector(listSelector);
 
-  console.log(list);
-
 // Converts UTC/UNIX timestamp into a date and time:
   const timeConverter = (UNIX_timestamp) => {
     let a = new Date(UNIX_timestamp * 1000);
