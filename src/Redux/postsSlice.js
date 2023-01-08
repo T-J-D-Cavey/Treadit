@@ -5,12 +5,24 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const getPosts = createAsyncThunk(
     'posts/getPosts',
     async (url) => {
+        console.log('run');
         const response = await fetch(url);
         const data = await response.json();
         const posts = data.data.children;
             return posts;
     }
 )
+
+// using awaits with search term added: to be deleted:
+// export const getPostsPlusSearchTerm = createAsyncThunk(
+//     'posts/getPosts',
+//     async (url) => {
+//         const response = await fetch(url);
+//         const data = await response.json();
+//         const posts = data.data.children;
+//             return posts;
+//     }
+// )
 
 const postsSlice = createSlice({
     name: 'posts',

@@ -35,14 +35,14 @@ export function FilterForm({callGetPosts}) {
         dispatch(changeTimeframe(event.target.value))
    }
 // Invokes getPosts to get data from reddit.json based on latest state:
-    const handleSubmit = (event) => {
+    const handleFormSubmit = (event) => {
      event.preventDefault();
      callGetPosts();
    }
 
     return (
         <div className='componentContainer'>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleFormSubmit}>
               <label htmlFor='subreddit'>Subreddit:</label>
               <select id='subreddit' value={subreddit} onChange={subredditOnChange}>
                   <option>r/hiking</option>
@@ -88,7 +88,7 @@ export function FilterForm({callGetPosts}) {
                   <option>year</option>
                   <option>day</option>
               </select>
-              <button type='submit'>Submit</button>
+              <button type='submit'>Filter</button>
             </form>
         </div>
     )

@@ -15,8 +15,6 @@ export function Filter() {
     const limit = useSelector(limitSelector);
     const timeframe = useSelector(timeframeSelector);
 
-    console.log(subreddit)
-
     // Fetches default data from initial state on mount, 
     // and whenever the filter form is submitted:
     const dispatch = useDispatch();
