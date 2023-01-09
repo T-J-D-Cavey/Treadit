@@ -5,7 +5,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const getPosts = createAsyncThunk(
     'posts/getPosts',
     async (url) => {
-        console.log('run');
+        console.log(url);
         const response = await fetch(url);
         const data = await response.json();
         const posts = data.data.children;

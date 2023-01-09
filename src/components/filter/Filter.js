@@ -14,13 +14,19 @@ export function Filter() {
     const listing = useSelector(listingSelector);
     const limit = useSelector(limitSelector);
     const timeframe = useSelector(timeframeSelector);
+    const searchTerm = useSelector(searchTermSelector);
 
     // Fetches default data from initial state on mount, 
     // and whenever the filter form is submitted:
     const dispatch = useDispatch();
     const callGetPosts = () => {
-        dispatch(getPosts(
-            `https://www.reddit.com/${subreddit}/${listing}.json?limit=${limit}&t=${timeframe}`))
+        if (searchTerm) {
+            dispatch(getPosts(
+                `https://www.reddit.com/${subreddit}/search.json?limit=${limit}&t=${timeframe}&q=${searchTerm}`))            
+        } else {
+            dispatch(getPosts(
+                `https://www.reddit.com/${subreddit}/${listing}.json?limit=${limit}&t=${timeframe}`))
+        }
     }
     useEffect(() => {
         callGetPosts()

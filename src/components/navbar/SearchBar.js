@@ -18,10 +18,20 @@ export function SearchBar() {
         const term = event.target.value.replace(/\s/g, '%20');
         dispatch(setSearchTerm(term));        
     }
-    // Invoke thunk to get posts with search term added:
-    const callGetPostsPlusSearchTerm = () => {
-        dispatch(getPosts(
-            `https://www.reddit.com/${subreddit}/${listing}.json?limit=${limit}&t=${timeframe}&q=${searchTerm}`))
+
+    // Calls getPosts with /search replacing /listing and search term added to query params if a search term is present when submit is clicked.
+    // Otherwise it calls getPosts without search term and with /listing that matches current state:
+    const callGetPostsPlusSearchTerm = (event) => {
+        event.preventDefault();
+        console.log('in call function:', subreddit, listing, limit, timeframe, searchTerm);
+        if (searchTerm) {
+            dispatch(getPosts(
+                `https://www.reddit.com/${subreddit}/search.json?limit=${limit}&t=${timeframe}&q=${searchTerm}`))            
+        } else {
+            dispatch(getPosts(
+                `https://www.reddit.com/${subreddit}/${listing}.json?limit=${limit}&t=${timeframe}`))
+        }
+
     }
         return (
             <div>

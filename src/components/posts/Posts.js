@@ -24,10 +24,6 @@ export function Posts() {
     let time = `${date} ${month} ${year} ${hour}:${min}`;
     return time;
   }
-
-  // I have hardcoded a limit of 20 in the postsSlice. 
-  // This could be made dynamic with filter options and new state being added, 
-  // and/or a 'next page' button added to the bottom of the list.
   
   return (
     <div className='flexItem postContainer'>

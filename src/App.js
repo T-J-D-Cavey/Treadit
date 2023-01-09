@@ -9,15 +9,12 @@ import './App.css';
 function App() {
   return ( 
     <div>
-        <Navbar />
-        <Filter />
-        <Routes>
-          <Route path='/' element={<Mainpage />} />
-          {/* Need to create additional routes for category names, 
-          which when selected will send a dispatch, change the posts state, 
-          and change the URL, causing the componant to render */}
-          <Route path='*' element={<Notfound />} /> 
-       </Routes>
+      <Navbar />
+      <Filter />
+      <Routes>
+        <Route path='/' element={<Mainpage />} />
+        <Route path='*' element={<Notfound />} /> 
+     </Routes>
     </div>
 
 
