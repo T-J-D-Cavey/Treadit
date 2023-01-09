@@ -34,7 +34,7 @@ export function FilterForm({callGetPosts}) {
         event.preventDefault();
         dispatch(changeTimeframe(event.target.value))
    }
-// Invokes getPosts to get data from reddit.json based on latest state:
+// Calls getPosts to when filter is submitted
     const handleFormSubmit = (event) => {
      event.preventDefault();
      callGetPosts();
@@ -88,7 +88,7 @@ export function FilterForm({callGetPosts}) {
                   <option>year</option>
                   <option>day</option>
               </select>
-              <button type='submit'>Filter</button>
+              <button type='submit'>Submit</button>
             </form>
         </div>
     )

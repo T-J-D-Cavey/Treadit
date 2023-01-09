@@ -1,15 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { getPosts, subredditSelector, listingSelector,
-    limitSelector, timeframeSelector, searchTermSelector, setSearchTerm } from "../../Redux/postsSlice";
+import {limitSelector, timeframeSelector, setSearchTerm,
+        changeLimit, changeTimeframe } from "../../Redux/postsSlice";
 
 export function SearchBar({callGetPosts}) {
 
-    const subreddit = useSelector(subredditSelector);
-    const listing = useSelector(listingSelector);
     const limit = useSelector(limitSelector);
     const timeframe = useSelector(timeframeSelector);
-    const searchTerm = useSelector(searchTermSelector);
 
 // To convert whitespaces into %20 and change searchterm state:
     const dispatch = useDispatch();
@@ -19,24 +16,40 @@ export function SearchBar({callGetPosts}) {
         dispatch(setSearchTerm(term));        
     }
 
-    // Calls getPosts with /search replacing /listing and search term added to query params if a search term is present when submit is clicked.
-    // Otherwise it calls getPosts without search term and with /listing that matches current state:
+// Changes limit state:
+    const limitOnChange = (event) => {
+        event.preventDefault();
+        dispatch(changeLimit(event.target.value))
+    }
+// Changes timeframe state:
+    const timeframeOnChange = (event) => {
+        event.preventDefault();
+        dispatch(changeTimeframe(event.target.value))
+    }
+
+// Calls getPosts to when searchbar is submitted
     const callGetPostsPlusSearchTerm = (event) => {
         event.preventDefault();
         callGetPosts();
-        // if (searchTerm) {
-        //     dispatch(getPosts(
-        //         `https://www.reddit.com/${subreddit}/search.json?limit=${limit}&t=${timeframe}&q=${searchTerm}`))            
-        // } else {
-        //     dispatch(getPosts(
-        //         `https://www.reddit.com/${subreddit}/${listing}.json?limit=${limit}&t=${timeframe}`))
-        // }
-
     }
         return (
             <div>
                 <form onSubmit={callGetPostsPlusSearchTerm}>
                     <input type='text' onChange={searchTermOnChange} placeholder='search...'/>
+                    <label htmlFor='limit'>How many:</label>
+                    <select id='limit' value={limit} onChange={limitOnChange}>
+                        <option>30</option>
+                        <option>60</option>
+                        <option>100</option>
+                        <option>200</option>
+                    </select>
+                    <label htmlFor='timeframe'>Since:</label>
+                    <select id='timeframe' value={timeframe} onChange={timeframeOnChange}>
+                        <option>week</option>
+                        <option>month</option>
+                        <option>year</option>
+                        <option>day</option>
+                    </select>
                     <button type='submit'>Submit</button>
                 </form>
             </div>

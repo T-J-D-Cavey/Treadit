@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 
-// Using awaits:
+// Async thunk using awaits to retrieve data from the reddit .json api:
 export const getPosts = createAsyncThunk(
     'posts/getPosts',
     async (url) => {
@@ -13,17 +13,6 @@ export const getPosts = createAsyncThunk(
     }
 )
 
-// using awaits with search term added: to be deleted:
-// export const getPostsPlusSearchTerm = createAsyncThunk(
-//     'posts/getPosts',
-//     async (url) => {
-//         const response = await fetch(url);
-//         const data = await response.json();
-//         const posts = data.data.children;
-//             return posts;
-//     }
-// )
-
 const postsSlice = createSlice({
     name: 'posts',
     initialState: {
@@ -33,7 +22,9 @@ const postsSlice = createSlice({
         listing: 'hot',
         limit: 30,
         timeframe: 'week',
-        searchTerm: null
+        searchTerm: null,
+        searchbar: false,
+        filter: false
     },
     reducers: {
         changeSubreddit: (state, action) => {
@@ -50,6 +41,12 @@ const postsSlice = createSlice({
         },
         setSearchTerm: (state, action) => {
             state.searchTerm = action.payload;
+        },
+        setSearchbar: (state) => {
+            state.searchbar = !state.searchbar;
+        },
+        setFilter: (state) => {
+            state.filter = !state.filter;
         }
     },
     // I need to convert this into 'builder' syntax:
@@ -95,8 +92,14 @@ export const searchTermSelector = (state) => {
     return state.posts.searchTerm;
 }
 
-export const {changeSubreddit, changeListing, changeLimit, changeTimeframe, setSearchTerm} = postsSlice.actions;
+export const searchbarSelector = (state) => {
+    return state.posts.searchbar;
+}
 
+export const filterSelector = (state) => {
+    return state.posts.filter;
+}
 
+export const {changeSubreddit, changeListing, changeLimit, changeTimeframe, setSearchTerm, setSearchbar, setFilter} = postsSlice.actions;
 
 export const postsReducer = postsSlice.reducer;
