@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPosts, subredditSelector, listingSelector,
     limitSelector, timeframeSelector, searchTermSelector, setSearchTerm } from "../../Redux/postsSlice";
 
-export function SearchBar() {
+export function SearchBar({callGetPosts}) {
 
     const subreddit = useSelector(subredditSelector);
     const listing = useSelector(listingSelector);
@@ -23,14 +23,14 @@ export function SearchBar() {
     // Otherwise it calls getPosts without search term and with /listing that matches current state:
     const callGetPostsPlusSearchTerm = (event) => {
         event.preventDefault();
-        console.log('in call function:', subreddit, listing, limit, timeframe, searchTerm);
-        if (searchTerm) {
-            dispatch(getPosts(
-                `https://www.reddit.com/${subreddit}/search.json?limit=${limit}&t=${timeframe}&q=${searchTerm}`))            
-        } else {
-            dispatch(getPosts(
-                `https://www.reddit.com/${subreddit}/${listing}.json?limit=${limit}&t=${timeframe}`))
-        }
+        callGetPosts();
+        // if (searchTerm) {
+        //     dispatch(getPosts(
+        //         `https://www.reddit.com/${subreddit}/search.json?limit=${limit}&t=${timeframe}&q=${searchTerm}`))            
+        // } else {
+        //     dispatch(getPosts(
+        //         `https://www.reddit.com/${subreddit}/${listing}.json?limit=${limit}&t=${timeframe}`))
+        // }
 
     }
         return (

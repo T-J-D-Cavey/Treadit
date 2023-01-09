@@ -1,16 +1,45 @@
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import { useEffect } from 'react';
 
-import {subredditSelector} from '../../Redux/postsSlice';
-import { SearchBar } from './SearchBar';
+import {
+    getPosts, subredditSelector, listingSelector,
+    limitSelector, timeframeSelector, searchTermSelector,
+    changeSubreddit, changeListing, changeLimit,
+    changeTimeframe
+} from '../../Redux/postsSlice';
+import {SearchBar}  from './SearchBar';
+import { FilterForm } from './FilterForm';
 
 export function Navbar() {
 
     const subreddit = useSelector(subredditSelector);
+    const listing = useSelector(listingSelector);
+    const limit = useSelector(limitSelector);
+    const timeframe = useSelector(timeframeSelector);
+    const searchTerm = useSelector(searchTermSelector);
+
+    // Fetches default data from initial state on mount, 
+    // and whenever the filter form / search bar is submitted:
+    const dispatch = useDispatch();
+    const callGetPosts = () => {
+        if (searchTerm) {
+            dispatch(getPosts(
+                `https://www.reddit.com/${subreddit}/search.json?limit=${limit}&t=${timeframe}&q=${searchTerm}`))            
+        } else {
+            dispatch(getPosts(
+                `https://www.reddit.com/${subreddit}/${listing}.json?limit=${limit}&t=${timeframe}`))
+        }
+    }
+    useEffect(() => {
+        callGetPosts()
+    }, []);
+
+
     return (
         <div className='flexContainer'>
             <div>Logo</div>
-            <SearchBar />
-            <h3>{`/${subreddit}`}</h3>
+            <FilterForm callGetPosts={callGetPosts} />
+            <SearchBar callGetPosts={callGetPosts}/>
         </div>
     )
 }
