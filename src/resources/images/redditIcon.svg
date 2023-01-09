@@ -1,5 +1,5 @@
 <!-- I need to change fill colour to the site's purple -->
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill='green'>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill='#4309A8'>
 <path d="M14.238 15.348c.085.084.085.221 0 
 .306-.465.462-1.194.687-2.231.687l-.008-.002-.008.002c-1.036 
 0-1.766-.225-2.231-.688-.085-.084-.085-.221 0-.305.084-.084.222-.084.307
