@@ -72,10 +72,10 @@ export function Navbar() {
                     </div>
                 </div>
             </div>
-            <div className='Filter'>
+            <div>
                 {searchbar? <SearchBar callGetPosts={callGetPosts}/> : <span className='displayNone'>hidden</span>}
             </div>
-            <div className='Filter'>
+            <div>
                 {filter? <FilterForm callGetPosts={callGetPosts} /> : <span className='displayNone'>hidden</span>}
             </div>  
         </div>

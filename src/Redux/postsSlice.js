@@ -20,7 +20,7 @@ const postsSlice = createSlice({
         status: null,
         subreddit: 'r/hiking',
         listing: 'hot',
-        limit: 30,
+        limit: 50,
         timeframe: 'week',
         searchTerm: null,
         searchbar: false,

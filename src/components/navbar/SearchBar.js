@@ -34,23 +34,32 @@ export function SearchBar({callGetPosts}) {
     }
         return (
             <div>
-                <form onSubmit={callGetPostsPlusSearchTerm}>
-                    <input type='text' onChange={searchTermOnChange} placeholder='search...'/>
-                    <label htmlFor='limit'>How many:</label>
-                    <select id='limit' value={limit} onChange={limitOnChange}>
-                        <option>30</option>
-                        <option>60</option>
-                        <option>100</option>
-                        <option>200</option>
-                    </select>
-                    <label htmlFor='timeframe'>Since:</label>
-                    <select id='timeframe' value={timeframe} onChange={timeframeOnChange}>
-                        <option>week</option>
-                        <option>month</option>
-                        <option>year</option>
-                        <option>day</option>
-                    </select>
-                    <button className='button' type='submit'>Submit</button>
+                <form className='filterForm' onSubmit={callGetPostsPlusSearchTerm}>
+                    <div className='filterItem'>
+                        <input className='searchbar filterItem' type='text' onChange={searchTermOnChange} placeholder='search...'/>
+                    </div>
+                    <div className='filterItem'>
+                        <label htmlFor='limit' className='marginRight'>How many:</label>
+                        <select id='limit' value={limit} onChange={limitOnChange}>
+                            <option>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                            <option>100</option>
+                            <option>200</option>
+                        </select>                        
+                    </div>
+                    <div className='filterItem'>
+                        <label htmlFor='timeframe' className='marginRight'>Since:</label>
+                        <select id='timeframe' value={timeframe} onChange={timeframeOnChange}>
+                            <option>day</option>
+                            <option>week</option>
+                            <option>month</option>
+                            <option>year</option>
+                        </select>                        
+                    </div>
+                    <div className='filterItem'>
+                        <button className='button' type='submit'>Submit</button>
+                    </div>
                 </form>
             </div>
         )
