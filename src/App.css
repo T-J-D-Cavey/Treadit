@@ -116,6 +116,28 @@ table {
 .marginRight {
     margin-right: 0.4rem;
 }
+.spinnerContainer {
+    width: 25%;
+    max-width: 6rem;
+    height: auto;
+    margin: 5rem auto;
+    display: flex;
+    animation: spinning 0.8s linear infinite;
+}
+
+.spinner {
+    width: 100%;
+}
+
+@keyframes spinning {
+    0% {
+        rotate: 0turn;
+    }
+
+    100% {
+        rotate: 1turn;
+    }
+}
 
 
 /* ---------------------- => Any other styles => */ 

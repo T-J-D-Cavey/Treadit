@@ -13,7 +13,7 @@ export function Mainpage() {
     if (status === 'failed') {
         return (
             <div className='componentContainer'>
-              <FailedToLoad />
+                <FailedToLoad />
             </div>
         )
     }

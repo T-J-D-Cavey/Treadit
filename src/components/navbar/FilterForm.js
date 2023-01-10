@@ -46,27 +46,27 @@ export function FilterForm({callGetPosts}) {
                 <div className='filterItem'>
                     <label htmlFor='subreddit' className='marginRight'>Subreddit:</label>
                     <select id='subreddit' value={subreddit} onChange={subredditOnChange}>
-                         <option>r/hiking</option>
-                         <option>r/Adventures</option>
-                         <option>r/Mountaineering</option>
-                         <option>r/Alpinism</option>
-                         <option>r/Climbing</option>
-                         <option>r/SearchAndRescue</option>
-                         <option>r/First_Aid</option>
-                         <option>r/WildernessMedicine</option>
-                         <option>r/Backpacking</option>
-                         <option>r/WildernessBackpacking</option>
-                         <option>r/TrailGuides</option>
-                         <option>r/Travel</option>
-                         <option>r/Camping </option>
-                         <option>r/CampingandHiking</option>
-                         <option>r/Campinggear</option>
-                         <option>r/GearTrade </option>
-                         <option>r/GoPro</option>
-                         <option>r/UltraLight</option>
-                         <option>r/Trailmeals</option>
-                         <option>r/HikerTrashMeals</option>
-                         <option>r/Survival</option>
+                        <option>r/hiking</option>
+                        <option>r/Adventures</option>
+                        <option>r/Mountaineering</option>
+                        <option>r/Alpinism</option>
+                        <option>r/Climbing</option>
+                        <option>r/SearchAndRescue</option>
+                        <option>r/First_Aid</option>
+                        <option>r/WildernessMedicine</option>
+                        <option>r/Backpacking</option>
+                        <option>r/WildernessBackpacking</option>
+                        <option>r/TrailGuides</option>
+                        <option>r/Travel</option>
+                        <option>r/Camping </option>
+                        <option>r/CampingandHiking</option>
+                        <option>r/Campinggear</option>
+                        <option>r/GearTrade </option>
+                        <option>r/GoPro</option>
+                        <option>r/UltraLight</option>
+                        <option>r/Trailmeals</option>
+                        <option>r/HikerTrashMeals</option>
+                        <option>r/Survival</option>
                     </select>
                 </div>
                 <div className='filterItem'>
