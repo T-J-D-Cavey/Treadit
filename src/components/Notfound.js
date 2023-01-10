@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
+import redditIcon from '../resources/images/redditIcon.svg';
+
 export function Notfound() {
     
 
@@ -14,7 +16,11 @@ export function Notfound() {
     }, [])
 
     return (
-        <div>Page not found component</div>
+        <div>
+            <h3 className='centered'>Page not found</h3>
+            <p className='centered'>Redirecing you in a few moments</p>
+            <img className='spinner spinnerContainer' src={redditIcon} alt=''/>
+         </div>
     )
 }
 

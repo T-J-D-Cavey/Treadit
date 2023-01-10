@@ -97,8 +97,14 @@ table {
 }
 
 .searchbar {
-    padding: 0.3rem 0.75rem;
-    border-radius: 30px;
+    padding: 0.5rem 0.75rem;
+    border-radius: 30px;    
+    background-color: var(--color-primary);
+    color: var(--color-font-light);
+}
+
+::placeholder {
+    color: var(--color-font-light);
 }
 
 .filterForm {
@@ -111,6 +117,13 @@ table {
 
 .filterItem {
     margin: 0.5rem 0; 
+}
+select {
+    padding: 0.125rem
+}
+option {
+    background-color: var(--color-primary);
+    color: var(--color-font-light)
 }
 
 .marginRight {
@@ -181,6 +194,7 @@ button:hover, button:active {
     border-right: 1px solid var(--color-font-dark);
     border-bottom: 1px solid var(--color-font-dark);
     border-radius: 10px;
+    height: 2rem;
 }
 
 .button:active {

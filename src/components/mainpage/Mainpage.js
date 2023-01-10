@@ -27,8 +27,7 @@ export function Mainpage() {
     else if (status === 'success') {
         return (
             <div className='flexboxContainer componentContainer'>
-              {/* <Posts /> */}
-              <FailedToLoad />
+              <Posts />
             </div>
         )
     }
