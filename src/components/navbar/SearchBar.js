@@ -50,7 +50,7 @@ export function SearchBar({callGetPosts}) {
                         <option>year</option>
                         <option>day</option>
                     </select>
-                    <button type='submit'>Submit</button>
+                    <button className='button' type='submit'>Submit</button>
                 </form>
             </div>
         )

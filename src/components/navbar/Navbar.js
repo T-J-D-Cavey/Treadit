@@ -7,7 +7,10 @@ import {
     searchbarSelector, filterSelector, setSearchbar, setFilter
 } from '../../Redux/postsSlice';
 import {SearchBar}  from './SearchBar';
-import { FilterForm } from './FilterForm';
+import {FilterForm} from './FilterForm';
+import redditIcon from '../../resources/images/redditIcon.svg';
+import searchIcon from '../../resources/images/searchIcon.svg';
+import filterIcon from '../../resources/images/filterIcon.svg';
 
 export function Navbar() {
 
@@ -53,14 +56,28 @@ export function Navbar() {
     }
 
     return (
-        <div className='flexContainer'>
-            <div>Logo</div>
-            <div>
-                <button onClick={searchbarHandler}>searchbar icon</button>
-                <button onClick={filterHandler}>filter icon</button>
+        <div className='sticky'>
+            <div className='nav'>
+                <div className='flex navflex'>
+                    <div>
+                        <img className='logoIcon' src={redditIcon} alt='logo' />
+                    </div>
+                    <div className='flex iconFlex'>
+                        <div>
+                            <button onClick={searchbarHandler}><img className='navIcon' src={searchIcon} alt='' /></button>
+                        </div>
+                        <div>
+                            <button  onClick={filterHandler}><img className='navIcon' src={filterIcon} alt='' /></button>
+                        </div> 
+                    </div>
+                </div>
             </div>
-            {searchbar? <SearchBar callGetPosts={callGetPosts}/> : <span className='displayNone'>hidden</span>}
-            {filter? <FilterForm callGetPosts={callGetPosts} /> : <span className='displayNone'>hidden</span>}   
+            <div className='Filter'>
+                {searchbar? <SearchBar callGetPosts={callGetPosts}/> : <span className='displayNone'>hidden</span>}
+            </div>
+            <div className='Filter'>
+                {filter? <FilterForm callGetPosts={callGetPosts} /> : <span className='displayNone'>hidden</span>}
+            </div>  
         </div>
     )
 }
