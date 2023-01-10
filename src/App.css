@@ -129,6 +129,14 @@ table {
     width: 100%;
 }
 
+.centered {
+    text-align: center;
+    width: 90%;
+    max-width: 15rem;
+    height: auto;
+    margin: 3rem auto 0 auto;
+}
+
 @keyframes spinning {
     0% {
         rotate: 0turn;
@@ -146,6 +154,10 @@ table {
 h1, h2, h3, h4, h5, h6, form {
     font-family: 'IBM Plex Sans', sans-serif;  
     color: var(--color-font-dark); 
+}
+
+h3 {
+    font-size: 2rem;
 }
 
 button {
