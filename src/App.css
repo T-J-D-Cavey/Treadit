@@ -276,8 +276,8 @@ p, span {
 }
 
 .postThumbnail {
-    /* width: 80%;
-    margin: auto; */
+    width: auto;
+    height: clamp(2rem, 30vh, 20rem);
     padding-bottom: 0.5rem;
 }  
 
