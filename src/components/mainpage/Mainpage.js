@@ -12,21 +12,21 @@ export function Mainpage() {
     // Renders different components depending on status state:
     if (status === 'failed') {
         return (
-            <div className='componentContainer'>
+            <div>
                 <FailedToLoad />
             </div>
         )
     }
     else if (status === 'loading') {
         return (
-            <div className='componentContainer'>
+            <div>
               <Loading />
             </div>
         )
     } 
     else if (status === 'success') {
         return (
-            <div className='flexboxContainer componentContainer'>
+            <div>
               <Posts />
             </div>
         )

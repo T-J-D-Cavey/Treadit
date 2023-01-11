@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import {listSelector} from '../../Redux/postsSlice';
 import redditIcon from '../../resources/images/redditIcon.svg';
 import videoIcon from '../../resources/images/videoIcon.svg';
+import commentIcon from '../../resources/images/commentIcon.svg';
+import thumbsUpIcon from '../../resources/images/thumbsUpIcon.svg';
 
 export function Posts() {
 
@@ -26,10 +28,10 @@ export function Posts() {
   }
   
   return (
-    <div className='flexItem postContainer'>
+    <div className='gridContainer'>
       {list.map((element, index) => 
-      <div key={index}  className='postContainer'>
-        <div className='flexboxContainer postSection'>
+      <div key={index}  className='gridItem'>
+        <div className='postSection'>
           <p>Posted by <span><a href={`https://www.reddit.com/user/${element.data.author}/`} target="_blank">{element.data.author}</a></span>
           <span>    {timeConverter(element.data.created)}</span></p>
         </div>
@@ -37,7 +39,7 @@ export function Posts() {
         
         
         {element.data.is_video ? 
-        <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><img src={videoIcon} alt='' className='postImage'/></a>
+        <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><img src={videoIcon} alt='' className='videoIcon'/></a>
         : <span className='displayNone'>hidden</span>}
         {element.data.is_gallery ? <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><img src={element.data.thumbnail} alt='' className='postThumbnail'/></a>
         : <span className='displayNone'>hidden</span>}
@@ -46,12 +48,14 @@ export function Posts() {
         : <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><p>{element.data.selftext}</p></a>}
 
 
-        <div className='flexboxContainer postSection'>
-          {/* Will add a comments box svg here */}
-          <p>{element.data.num_comments === 1 ? 
-          `${element.data.num_comments} comment` 
+        <div className='postSection'>
+          <img className='commentIcon' src={commentIcon} alt=''/>
+          <span>{element.data.num_comments === 1 ? 
+          `  ${element.data.num_comments} comment`   
           : 
-          `${element.data.num_comments} comments`}<span> {element.data.ups} upvotes</span></p>
+          `  ${element.data.num_comments} comments`}  </span>
+          <img className='commentIcon' src={thumbsUpIcon} alt=''/>
+          <span>  {element.data.ups} upvotes</span>
         </div>
       </div> )}
     </div>
