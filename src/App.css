@@ -63,6 +63,11 @@ table {
     
 }
 
+.CenterOneChild {
+    display: flex;
+    justify-content: center;
+}
+
 .sticky {
     margin-bottom: 3rem;
 }
@@ -99,12 +104,6 @@ table {
 .searchbar {
     padding: 0.5rem 0.75rem;
     border-radius: 30px;    
-    background-color: var(--color-primary);
-    color: var(--color-font-light);
-}
-
-::placeholder {
-    color: var(--color-font-light);
 }
 
 .filterForm {
@@ -134,7 +133,7 @@ option {
     max-width: 6rem;
     height: auto;
     margin: 5rem auto;
-    animation: spinning 0.8s linear infinite;
+    animation: spinning 2s linear infinite;
 }
 
 .spinner {
@@ -220,9 +219,9 @@ p, span {
     width: 90%;
     padding: 1rem;
     margin: 0 auto 0.5rem auto;
-    /* height: clamp(10rem, 65vh, 30rem); */
+    /* This option ends up making every post the same height: height: clamp(5rem, 80vh, 30rem); */
     overflow: hidden; 
-    background-color: green;
+    text-align: center;
 }
 
 .gridItem a {
@@ -235,30 +234,46 @@ p, span {
     color: var(--color-primary)
 }
 
+.gridItem a:visited {
+    text-decoration: none;
+    color: var(--color-font-dark)
+}
+
 .gridItem h3 {
     font-size: clamp(1.25rem, 1.5vw, 2rem);
 }
 
 .postSection {
-    font-size: clamp(0.75rem, 1.25vw, 1rem);
+    font-size: clamp(0.75rem, 1.25vw, 0.8rem);
+    padding-bottom: 0.5rem;
 }
 
 
 .postImage {
-    /* width: clamp(5rem, 80%, 20rem); */
-    /* height: clamp(5rem, 50%, 30rem); */
+    width: auto;
+    height: clamp(5rem, 50vh, 30rem);
+    padding-bottom: 0.5rem;
 }
 
 .videoIcon {
+    height: clamp(5rem, 15vh, 20rem);
     /* width: clamp(5rem, 30%, 20rem);
     margin: 0 auto; */
-    background-color: red;
+    width: 100px;
+    margin: 0 auto;
+    padding-bottom: 0.5rem;
 }
 
 .postThumbnail {
     /* width: 80%;
     margin: auto; */
+    padding-bottom: 0.5rem;
 }  
+
+.descriptionText {
+    max-height: 20rem;
+    overflow: hidden;
+}
 
 .commentIcon {
     position: relative;
@@ -298,7 +313,7 @@ p, span {
     .gridContainer {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-        gap: 1rem;
+        gap: 1.5rem;
     }
 }
 

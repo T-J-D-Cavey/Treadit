@@ -39,13 +39,13 @@ export function Posts() {
         
         
         {element.data.is_video ? 
-        <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><img src={videoIcon} alt='' className='videoIcon'/></a>
+        <a className='CenterOneChild' href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><img src={videoIcon} alt='' className='videoIcon'/></a>
         : <span className='displayNone'>hidden</span>}
-        {element.data.is_gallery ? <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><img src={element.data.thumbnail} alt='' className='postThumbnail'/></a>
+        {element.data.is_gallery ? <a className='CenterOneChild' href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><img src={element.data.thumbnail} alt='' className='postThumbnail'/></a>
         : <span className='displayNone'>hidden</span>}
         {element.data.post_hint === 'image' ? 
-        <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><img src={element.data.url} alt='' className='postImage'/></a> 
-        : <a href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><p>{element.data.selftext}</p></a>}
+        <a className='CenterOneChild' href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><img src={element.data.url} alt='' className='postImage'/></a> 
+        : <a className='CenterOneChild' href={`https://www.reddit.com${element.data.permalink}`} target="_blank"><p className='descriptionText'>{element.data.selftext}</p></a>}
 
 
         <div className='postSection'>
