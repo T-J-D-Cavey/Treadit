@@ -27,6 +27,10 @@ export function Mainpage() {
     else if (status === 'success') {
         return (
             <div>
+                <div className='flex intro'>
+                    <h1 className='title'>Treadit</h1>
+                    <p>Find the best hiking reddit posts</p>                   
+                </div>
               <Posts />
             </div>
         )

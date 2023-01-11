@@ -206,22 +206,34 @@ p, span {
 
 .title {
     font-family: 'Seymour One', sans-serif;
+    margin: 0 0.2rem 1rem 0.2rem;
+    color: var(--color-primary);
+    font-size: clamp(1.5rem, 70vw, 3rem);
+}
+
+.intro {
+    flex-direction: column;
+    text-align: center;
+}
+
+.intro p {
+    margin-bottom: 2rem;
 }
 
 /* Post styles: */
 
 .gridContainer {
     overflow: hidden;
-    width: 100vw;
+    width: 98vw;
 }
 
 .gridItem {
     width: 90%;
     padding: 1rem;
     margin: 0 auto 0.5rem auto;
-    /* This option ends up making every post the same height: height: clamp(5rem, 80vh, 30rem); */
     overflow: hidden; 
     text-align: center;
+    box-shadow: 0 1px 5px  lightgray;
 }
 
 .gridItem a {
@@ -247,7 +259,6 @@ p, span {
     font-size: clamp(0.75rem, 1.25vw, 0.8rem);
     padding-bottom: 0.5rem;
 }
-
 
 .postImage {
     width: auto;
@@ -312,7 +323,7 @@ p, span {
 
     .gridContainer {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
         gap: 1.5rem;
     }
 }
