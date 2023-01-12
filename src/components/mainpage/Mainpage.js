@@ -4,6 +4,7 @@ import {Posts} from '../posts/Posts';
 import {FailedToLoad} from './FailedToLoad';
 import {Loading} from './Loading';
 import {statusSelector} from '../../Redux/postsSlice';
+import mountainTitleIcon from '../../resources/images/mountainTitleIcon.svg'
 
 export function Mainpage() {
 
@@ -29,6 +30,7 @@ export function Mainpage() {
             <div>
                 <div className='flex intro'>
                     <h1 className='title'>Treadit</h1>
+                    <img className='titleBackground' src={mountainTitleIcon} alt='mountain'/>
                     <p>Find the best hiking reddit posts</p>                   
                 </div>
               <Posts />

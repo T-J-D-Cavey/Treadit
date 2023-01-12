@@ -3,6 +3,7 @@
 
 :root {
     --color-primary: #4309A8;
+    --color-secondary: #FF5700;
     --color-light: #F7F1F8;
     --color-font-light: #F7F1F8;
     --color-font-dark: #030A0E;
@@ -101,11 +102,6 @@ table {
     height: 1.2rem;
 }
 
-.searchbar {
-    padding: 0.5rem 0.75rem;
-    border-radius: 30px;    
-}
-
 .filterForm {
     display: flex;
     flex-direction: column;
@@ -115,11 +111,21 @@ table {
 }
 
 .filterItem {
-    margin: 0.5rem 0; 
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin-bottom: 0.5rem;
 }
+
 select {
-    padding: 0.125rem
+    width: 10rem;
 }
+.searchbar {
+    padding: 0.5rem 0.75rem;
+    border-radius: 30px;
+    width: 9rem;    
+}
+
 option {
     background-color: var(--color-primary);
     color: var(--color-font-light)
@@ -158,9 +164,7 @@ option {
     }
 }
 
-
 /* ---------------------- => Any other styles => */ 
-
 
 h1, h2, h3, h4, h5, h6, form {
     font-family: 'IBM Plex Sans', sans-serif;  
@@ -186,7 +190,7 @@ button:hover, button:active {
 
 .button {
     color: var(--color-font-light);
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary);
     padding: 0.5em 1em;
     text-align: center;
     border-right: 1px solid var(--color-font-dark);
@@ -204,21 +208,32 @@ p, span {
     color: var(--color-font-dark); 
 }
 
-.title {
-    font-family: 'Seymour One', sans-serif;
-    margin: 0 0.2rem 1rem 0.2rem;
-    color: var(--color-primary);
-    font-size: clamp(1.5rem, 70vw, 3rem);
-}
-
 .intro {
     flex-direction: column;
-    text-align: center;
+    text-align: center;    
+
+}
+
+.title {
+    font-family: 'Seymour One', sans-serif;
+    margin: 0 0.2rem 0 0.2rem;
+    color: var(--color-primary);
+    font-size: clamp(1.4rem, 10vw, 3.2rem);
 }
 
 .intro p {
-    margin-bottom: 2rem;
+    margin: 0.5rem auto 2rem auto;
+    color: var(--color-secondary);
+    font-weight: 600;
 }
+
+.titleBackground {
+    width: clamp(5rem, 70vw, 18rem);
+    height: 20vh;
+    margin: auto;
+    z-index: -1;
+}
+
 
 /* Post styles: */
 
@@ -230,7 +245,7 @@ p, span {
 .gridItem {
     width: 90%;
     padding: 1rem;
-    margin: 0 auto 0.5rem auto;
+    margin: 0.5rem auto 0.5rem auto;
     overflow: hidden; 
     text-align: center;
     box-shadow: 0 1px 5px  lightgray;
@@ -255,6 +270,10 @@ p, span {
     font-size: clamp(1.25rem, 1.5vw, 2rem);
 }
 
+#author {
+    color: var(--color-secondary);
+}
+
 .postSection {
     font-size: clamp(0.75rem, 1.25vw, 0.8rem);
     padding-bottom: 0.5rem;
@@ -263,15 +282,6 @@ p, span {
 .postImage {
     width: auto;
     height: clamp(5rem, 50vh, 30rem);
-    padding-bottom: 0.5rem;
-}
-
-.videoIcon {
-    height: clamp(5rem, 15vh, 20rem);
-    /* width: clamp(5rem, 30%, 20rem);
-    margin: 0 auto; */
-    width: 100px;
-    margin: 0 auto;
     padding-bottom: 0.5rem;
 }
 
@@ -308,17 +318,6 @@ p, span {
     }
     .navIcon {
         height: 1.8rem;
-    }
-
-    .filterForm {
-        flex-direction: row;
-        margin: 1rem auto 0 auto;
-        align-items: center;
-        max-width: 1000px;
-    }
-    
-    .filterItem {
-        margin: 0 0.75rem;
     }
 
     .gridContainer {

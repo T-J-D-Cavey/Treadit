@@ -89,7 +89,7 @@ export function FilterForm({callGetPosts}) {
                    </select>                    
                 </div>
                 <div className='filterItem'>
-                   <label htmlFor='timeframe' className='marginRight'>Since:</label>
+                   <label htmlFor='timeframe' className='marginRight'>Time range:</label>
                    <select id='timeframe' value={timeframe} onChange={timeframeOnChange}>
                         <option>day</option>
                         <option>week</option>
