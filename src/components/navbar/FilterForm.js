@@ -1,12 +1,12 @@
 import { useDispatch, useSelector} from 'react-redux';
 
 import {
-    subredditSelector, listingSelector,
+    subredditSelector, listingSelector, setSearchTerm,
     limitSelector, timeframeSelector, changeSubreddit, 
     changeListing, changeLimit, changeTimeframe
 } from '../../Redux/postsSlice';
 
-export function FilterForm({callGetPosts}) {
+export function FilterForm({callGetPostsFilter}) {
 
     const dispatch = useDispatch();
     const subreddit = useSelector(subredditSelector);
@@ -34,10 +34,11 @@ export function FilterForm({callGetPosts}) {
         event.preventDefault();
         dispatch(changeTimeframe(event.target.value))
    }
-// Calls getPosts to when filter is submitted
+// Calls callGetPostsFilter to when filter is submitted
     const handleFormSubmit = (event) => {
      event.preventDefault();
-     callGetPosts();
+     dispatch(setSearchTerm(null));
+     callGetPostsFilter();
    }
 
     return (

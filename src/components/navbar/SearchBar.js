@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {limitSelector, timeframeSelector, setSearchTerm,
         changeLimit, changeTimeframe } from "../../Redux/postsSlice";
 
-export function SearchBar({callGetPosts}) {
+export function SearchBar({callGetPostsSearch}) {
 
     const limit = useSelector(limitSelector);
     const timeframe = useSelector(timeframeSelector);
@@ -27,10 +27,10 @@ export function SearchBar({callGetPosts}) {
         dispatch(changeTimeframe(event.target.value))
     }
 
-// Calls getPosts to when searchbar is submitted
+// Calls callGetPostsSearch to when searchbar is submitted
     const callGetPostsPlusSearchTerm = (event) => {
         event.preventDefault();
-        callGetPosts();
+        callGetPostsSearch();
     }
         return (
             <div>

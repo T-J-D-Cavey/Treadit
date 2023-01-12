@@ -29,7 +29,7 @@ This web app uses the Reddit .JSON API to retrieve reddit posts. This API doesn'
 
 This project is partly a demonstration of writing js tests. It uses '@testing-library/react', 'testing-library/user-event', '@testing-library/jest-dom'. The Jest and Enzyme js library.
 
-It has some unit tests of vital features and function, some integration of the most important features, and will have end to end testing. I do not intend to provide 100% unit testing coverage as I don't deem it to be worth my time at this point. A demonstration of writing good tests is partly the purpose of this project. This can be demonstrated without 100% coverage.  
+It has some unit tests of vital features and functions, some integration tests of the most important features, and will have end to end testing. I do not intend to provide 100% unit testing coverage as I don't deem it to be worth my time at this point. A demonstration of writing good tests is partly the purpose of this project. This can be demonstrated without 100% coverage.  
 
 ## Why was this project made?
 

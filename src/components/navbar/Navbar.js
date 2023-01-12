@@ -25,7 +25,7 @@ export function Navbar() {
     // Fetches default data from initial state on mount, 
     // and whenever the filter form / search bar is submitted:
     const dispatch = useDispatch();
-    const callGetPosts = () => {
+    const callGetPostsSearch = () => {
         if (searchTerm) {
             dispatch(getPosts(
                 `https://www.reddit.com/${subreddit}/search.json?limit=${limit}&t=${timeframe}&q=${searchTerm}`))            
@@ -33,9 +33,15 @@ export function Navbar() {
             dispatch(getPosts(
                 `https://www.reddit.com/${subreddit}/${listing}.json?limit=${limit}&t=${timeframe}`))
         }
-    }
+    };
+
+    const callGetPostsFilter = () => {
+        dispatch(getPosts(
+            `https://www.reddit.com/${subreddit}/${listing}.json?limit=${limit}&t=${timeframe}`))        
+    };
+
     useEffect(() => {
-        callGetPosts()
+        callGetPostsFilter()
     }, []);
 
 // Toggles searchbar and filter components by changing state, so only one or none can appear at any given time:
@@ -73,10 +79,10 @@ export function Navbar() {
                 </div>
             </div>
             <div>
-                {searchbar? <SearchBar callGetPosts={callGetPosts}/> : <span className='displayNone'>hidden</span>}
+                {searchbar? <SearchBar callGetPostsSearch={callGetPostsSearch}/> : <span className='displayNone'>hidden</span>}
             </div>
             <div>
-                {filter? <FilterForm callGetPosts={callGetPosts} /> : <span className='displayNone'>hidden</span>}
+                {filter? <FilterForm callGetPostsFilter={callGetPostsFilter} /> : <span className='displayNone'>hidden</span>}
             </div>  
         </div>
     )

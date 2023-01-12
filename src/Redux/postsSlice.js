@@ -49,19 +49,19 @@ const postsSlice = createSlice({
             state.filter = !state.filter;
         }
     },
-    // I need to convert this into 'builder' syntax:
-    extraReducers: {
-        [getPosts.pending]: (state) => {
-            state.status = 'loading'
-        },
-        [getPosts.fulfilled]: (state, action) => {
+    extraReducers: (builder) => {
+        builder
+            .addCase(getPosts.pending, (state) => {
+                state.status = 'loading'
+            })
+            .addCase(getPosts.fulfilled, (state, action) => {
             state.list = action.payload;
             state.status = 'success'
-        },
-        [getPosts.rejected]: (state) => {
+            })
+            .addCase(getPosts.rejected, (state) => {
             state.status = 'failed'
-        }
-    }
+            })
+        },
 });
 
 export const listSelector = (state) => {
@@ -103,3 +103,42 @@ export const filterSelector = (state) => {
 export const {changeSubreddit, changeListing, changeLimit, changeTimeframe, setSearchTerm, setSearchbar, setFilter} = postsSlice.actions;
 
 export const postsReducer = postsSlice.reducer;
+
+
+/*
+
+    extraReducers: (builder) => {
+        builder
+            .addCase(getPosts.pending, (state, action) => {
+                state.status = 'loading'
+            })
+            .addCase(getPosts.fulfilled, (state, action) => {
+            state.list = action.payload;
+            state.status = 'success'
+            })
+            .addCase(getPosts.rejected, (state) => {
+            state.status = 'failed'
+            })
+        },
+
+
+    extraReducers: {
+        [getPosts.pending]: (state) => {
+            state.status = 'loading'
+        },
+        [getPosts.fulfilled]: (state, action) => {
+            state.list = action.payload;
+            state.status = 'success'
+        },
+        [getPosts.rejected]: (state) => {
+            state.status = 'failed'
+        }
+    }
+
+
+
+
+
+
+
+*/
