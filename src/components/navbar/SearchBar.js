@@ -27,7 +27,7 @@ export function SearchBar({callGetPostsSearch}) {
         dispatch(changeTimeframe(event.target.value))
     }
 
-// Calls callGetPostsSearch to when searchbar is submitted
+// Calls callGetPostsSearch to fetch data when searchbar (with or without a searchterm) is submitted
     const callGetPostsPlusSearchTerm = (event) => {
         event.preventDefault();
         callGetPostsSearch();

@@ -1,7 +1,6 @@
-import {Routes, Route, Link} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 
 import { Navbar } from './components//navbar/Navbar';
-import { Filter } from './components/navbar/filter/Filter';
 import { Mainpage } from './components/mainpage/Mainpage';
 import { Notfound } from './components/Notfound';
 import './App.css';

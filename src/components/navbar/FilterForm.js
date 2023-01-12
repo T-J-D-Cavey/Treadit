@@ -34,7 +34,7 @@ export function FilterForm({callGetPostsFilter}) {
         event.preventDefault();
         dispatch(changeTimeframe(event.target.value))
    }
-// Calls callGetPostsFilter to when filter is submitted
+// Calls callGetPostsFilter to fetch data when filter is submitted:
     const handleFormSubmit = (event) => {
      event.preventDefault();
      dispatch(setSearchTerm(null));
