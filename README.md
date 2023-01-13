@@ -2,7 +2,7 @@
 
 Into hiking, the outdoors and adventure? How about Reddit, the online community and discussion forum? Treadit combines the two so you can easily find the best Reddit posts about your walking hobby. Take a step (tread) into Treadit!
 
-CLick here to visit the web app *URL to be added once deployed*
+CLick here to visit the web app: https://treadit.netlify.app/
 
 ## What is this project?
 
