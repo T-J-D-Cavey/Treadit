@@ -65,7 +65,7 @@ export function Navbar() {
         <div className='sticky'>
             <div className='nav'>
                 <div className='flex navflex'>
-                    <div>
+                    <div onClick={callGetPostsFilter}>
                         <img className='logoIcon' src={redditIcon} alt='logo' />
                     </div>
                     <div className='flex iconFlex'>

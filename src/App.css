@@ -96,6 +96,7 @@ table {
 
 .logoIcon {
     height: 3rem;
+    cursor: pointer;
 }
 
 .navIcon {
@@ -111,8 +112,9 @@ table {
     position: absolute;
     right: 0%;
     background-color: var(--color-light);
-    padding: 1rem;
+    padding: 1rem 0 1rem 1rem;
     border-radius: 20%;
+    font-size: 0.8rem;
 }
 
 .filterItem {
@@ -124,12 +126,12 @@ table {
 }
 
 select {
-    width: 10rem;
+    width: 9.8rem;
 }
 .searchbar {
     padding: 0.5rem 0.75rem;
     border-radius: 30px;
-    width: 14rem;    
+    width: 13rem;    
 }
 
 option {
@@ -145,7 +147,7 @@ option {
     max-width: 6rem;
     height: auto;
     margin: 5rem auto;
-    animation: spinning 2s linear infinite;
+    animation: spinning 2s linear 0s infinite normal;
 }
 
 .spinner {
