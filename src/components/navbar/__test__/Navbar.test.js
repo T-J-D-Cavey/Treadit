@@ -31,14 +31,24 @@ describe('Navbar component tests:', () => {
     expect(filterButton).toBeInTheDocument()
   });
 // The test below was failing till it was made async / await:
-  test('renders an image element with an alt text of logo', async () => {
+test('renders an image element with an alt text of logo', async () => {
+  render(
+    <Provider store={store}>
+      <Navbar />
+    </Provider>
+  );
+  const logoIcon = await screen.findByAltText('logo');
+  expect(logoIcon).toBeInTheDocument();
+});
+// This test is currently not working and may break test file:
+  test('renders an image element with an attribute of src that equals searchIcon', async () => {
     render(
       <Provider store={store}>
         <Navbar />
       </Provider>
     );
-    const logoIcon = await screen.findByAltText('logo');
-    expect(logoIcon).toBeInTheDocument();
+    const images = await screen.findAllByRole('img');
+    expect(images[1]).toHaveAttribute({ alt: /searchIcon/i });
   });
 
   test('renders 3 image elements in the NavBar component', async () => {
@@ -125,7 +135,6 @@ describe('Navbar component tests:', () => {
   //   )
   //   expect(getByText('Treadit')).toBeInTheDocument()
   // })
-
 
 
 
