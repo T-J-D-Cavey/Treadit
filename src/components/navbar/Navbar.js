@@ -70,10 +70,10 @@ export function Navbar() {
                     </div>
                     <div className='flex iconFlex'>
                         <div>
-                            <button onClick={searchbarHandler}><img className='navIcon' src={searchIcon} alt='' /></button>
+                            <button onClick={searchbarHandler} aria-label="search"><img className='navIcon' src={searchIcon} alt='' /></button>
                         </div>
                         <div>
-                            <button  onClick={filterHandler}><img className='navIcon' src={filterIcon} alt='' /></button>
+                            <button  onClick={filterHandler} aria-label="filter"><img className='navIcon' src={filterIcon} alt='' /></button>
                         </div> 
                     </div>
                 </div>
