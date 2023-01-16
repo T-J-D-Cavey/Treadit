@@ -8,7 +8,7 @@ import {store} from '../../../Redux/store';
 import {Navbar} from '../Navbar';
 
 
-describe('Navbar component tests:', () => {
+describe('Navbar component unit tests:', () => {
 
 // One approach, destructuring getByRole method from render function:
   test('renders the search button:', () => {
@@ -40,7 +40,17 @@ test('renders an image element with an alt text of logo', async () => {
   const logoIcon = await screen.findByAltText('logo');
   expect(logoIcon).toBeInTheDocument();
 });
-// This test is currently not working and may break test file:
+// Looks at all images in Navbar and checks the src of the first image:
+test('renders an image element with an attribute of src that equals searchIcon', async () => {
+  render(
+    <Provider store={store}>
+      <Navbar />
+    </Provider>
+  );
+  const images = await screen.findAllByRole('img');
+  expect(images[0].src).toContain('redditIcon');
+});
+// Looks at all images in Navbar and checks the src of the second image:
   test('renders an image element with an attribute of src that equals searchIcon', async () => {
     render(
       <Provider store={store}>
@@ -48,9 +58,19 @@ test('renders an image element with an alt text of logo', async () => {
       </Provider>
     );
     const images = await screen.findAllByRole('img');
-    expect(images[1]).toHaveAttribute({ alt: /searchIcon/i });
+    expect(images[1].src).toContain('searchIcon');
   });
-
+  // Looks at all images in Navbar and checks the src of the third image:
+  test('renders an image element with an attribute of src that equals searchIcon', async () => {
+    render(
+      <Provider store={store}>
+        <Navbar />
+      </Provider>
+    );
+    const images = await screen.findAllByRole('img');
+    expect(images[2].src).toContain('filterIcon');
+  });
+// Checks that three image elements are rendered by Navbar component:
   test('renders 3 image elements in the NavBar component', async () => {
     render(
       <Provider store={store}>
@@ -60,82 +80,16 @@ test('renders an image element with an alt text of logo', async () => {
     const imageElements = await screen.findAllByRole('img');
     expect(imageElements).toHaveLength(3);
   })
+  // Tests that the two span elements aren't visible:
+  test('renders two span elements in the NavBar component', async () => {
+    render(
+      <Provider store={store}>
+        <Navbar />
+      </Provider>
+    );
+    const spanElements = await screen.findAllByText(/hidden/);
+    expect(spanElements).toHaveLength(2);
+    expect(spanElements).not.toBeVisible;
+  })
 
 });
-
-// This is a default test I will remove eventually:
-// test('renders learn react link', () => {
-//   render(<App />);
-//   const linkElement = screen.getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
-
-// This is non-default testing code from YT:
-// import renderer from 'react-test-renderer';
-// test("Snapshot of App.js", () => {
-//     const component = renderer.create(<App />);
-//     let tree = component.toJSON();
-//     expect(tree).toMatchSnapshot();
-// })
-
-// This is code from chatGPT:
-// import { render, fireEvent } from 'react-testing-library'
-// import { Provider } from 'react-redux'
-// import { createStore } from 'redux'
-// import reducer from './reducer'
-// import YourComponent from './YourComponent'
-
-// describe('YourComponent', () => {
-//   let store
-
-//   beforeEach(() => {
-//     store = createStore(reducer);
-
-//   })
-
-//   it('displays the correct text', () => {
-//     const { getByText } = render(
-//       <Provider store={store}>
-//         <YourComponent />
-//       </Provider>
-//     )
-
-//     expect(getByText('Hello, World!')).toBeInTheDocument()
-//   })
-
-//   it('dispatches an action on button click', () => {
-//     const { getByText } = render(
-//       <Provider store={store}>
-//         <YourComponent />
-//       </Provider>
-//     )
-
-//     fireEvent.click(getByText('Click me'))
-
-//     expect(store.getActions()).toEqual([{ type: 'SOME_ACTION' }])
-//   })
-// })
-
-
-  // This is my imitation of ChatGPTs code, which didn't work:
-  // let store;
-  // beforeEach(() => {
-  //   store = configureStore({
-  //     reducer: {
-  //         posts: postsReducer
-  //     }
-  //     })
-  //   store = createStore(postsReducer)
-  // })
-  // test('displays the correct text in H1 element', () => {
-  //   const { getByText } = render(
-  //     <Provider store={store}>
-  //       <Mainpage />
-  //     </Provider>
-  //   )
-  //   expect(getByText('Treadit')).toBeInTheDocument()
-  // })
-
-
-
-
