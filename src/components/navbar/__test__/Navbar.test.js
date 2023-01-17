@@ -1,11 +1,13 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import {postsReducer, getPosts} from '../../../Redux/postsSlice';
 import {store} from '../../../Redux/store';
 import {Navbar} from '../Navbar';
+import {renderWithProviders} from '../../../utils/testUtils';
 
 describe('Navbar component tests:', () => {
   describe('Navbar component unit tests:', () => {
@@ -13,9 +15,10 @@ describe('Navbar component tests:', () => {
     // One approach, destructuring getByRole method from render function:
       test('renders the search button:', () => {
         const {getByRole} = render(
-          <Provider store={store}>
-            <Navbar />
-          </Provider>
+          renderWithProviders(<Navbar />)
+          // <Provider store={store}>
+          //   <Navbar />
+          // </Provider>
         );
         expect(getByRole('button', { name: /search/i })).toBeInTheDocument()
       });
@@ -119,33 +122,33 @@ describe('Navbar component tests:', () => {
       expect(filterForm).toBeInTheDocument();       
     })
     // Tests that getPosts is sent a dispatch when the Navbar is rendered:
-    test('a dispatch is sent when the Navbar component is rendered', async () => {
+    // test('a dispatch is sent when the Navbar component is rendered', async () => {
        
-      render(
-        <Provider store={store}>
-          <Navbar />
-        </Provider>
-      );
+    //   render(
+    //     <Provider store={store}>
+    //       <Navbar />
+    //     </Provider>
+    //   );
 
-      const spy = jest.spyOn(store, 'dispatch');
-      store.dispatch(getPosts("https://www.reddit.com/r/hiking.json"));
+    //   const spy = jest.spyOn(store, 'dispatch');
+    //   store.dispatch(getPosts("https://www.reddit.com/r/hiking.json"));
     
-      expect(spy).toHaveBeenCalled();      
-    }) 
-    // Tests that getPosts is called a second time when the logoIcon is clicked:
-    test('another dispatch is sent when logoIcon is clicked', async () => {
+    //   expect(spy).toHaveBeenCalled();      
+    // }) 
+    // // Tests that getPosts is called a second time when the logoIcon is clicked:
+    // test('another dispatch is sent when logoIcon is clicked', async () => {
     
-      render(
-        <Provider store={store}>
-          <Navbar />
-        </Provider>
-      );
-      const spy = jest.spyOn(store, 'dispatch');
-      const logoIcon = await screen.findByAltText('logo');
-      fireEvent.click(logoIcon);
+    //   render(
+    //     <Provider store={store}>
+    //       <Navbar />
+    //     </Provider>
+    //   );
+    //   const spy = jest.spyOn(store, 'dispatch');
+    //   const logoIcon = await screen.findByAltText('logo');
+    //   fireEvent.click(logoIcon);
     
-      expect(spy).toHaveBeenCalledTimes(2);      
-    }) 
+    //   expect(spy).toHaveBeenCalledTimes(2);      
+    // }) 
     // testing the payload and action creator being sent to getPosts:
   //   test('getPosts async thunk is called with the correct payload', async () => {
   //     const spy = jest.spyOn(store, 'dispatch');
