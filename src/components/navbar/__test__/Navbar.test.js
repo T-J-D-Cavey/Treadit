@@ -16,8 +16,7 @@ describe('Navbar component:', () => {
       const {getByRole} = renderWithProviders(<Navbar />)
       expect(getByRole('button', { name: /search/i })).toBeInTheDocument()
     });
-
-    // Equivalent test to the one above but using screen object: 
+ 
     test('renders the filter button:', () => {
       renderWithProviders(<Navbar />)
       const filterButton = screen.getByRole('button', { name: /filter/i })
@@ -31,35 +30,30 @@ describe('Navbar component:', () => {
       expect(logoIcon).toBeInTheDocument();
     });
 
-    // Looks at all images in Navbar and checks the src of the first image:
     test('renders an image element with an attribute of src that equals redditIcon', async () => {
       renderWithProviders(<Navbar />)
       const images = await screen.findAllByRole('img');
       expect(images[0].src).toContain('redditIcon');
     });
 
-    // Looks at all images in Navbar and checks the src of the second image:
     test('renders an image element with an attribute of src that equals searchIcon', async () => {
       renderWithProviders(<Navbar />)
       const images = await screen.findAllByRole('img');
       expect(images[1].src).toContain('searchIcon');
     });
 
-    // Looks at all images in Navbar and checks the src of the third image:
     test('renders an image element with an attribute of src that equals filterIcon', async () => {
       renderWithProviders(<Navbar />)
       const images = await screen.findAllByRole('img');
       expect(images[2].src).toContain('filterIcon');
     });
 
-    // Checks that three image elements are rendered by Navbar component:
     test('renders 3 image elements in the NavBar component', async () => {
       renderWithProviders(<Navbar />)
       const imageElements = await screen.findAllByRole('img');
       expect(imageElements).toHaveLength(3);
     })
 
-    // Tests that the two span elements aren't visible:
     test('renders two span elements in the NavBar component', async () => {
       renderWithProviders(<Navbar />)
       const spanElements = await screen.findAllByText(/hidden/);
@@ -70,7 +64,6 @@ describe('Navbar component:', () => {
 
   describe('Navbar component integration tests:', () => {
 
-    // Tests integration of Navbar and SearchBar components:
     test('searchbar input appears after the searchbar buttton is clicked:', () => {
       renderWithProviders(<Navbar />)
       const searchButton = screen.getByRole('button', { name: /search/i });
@@ -79,7 +72,6 @@ describe('Navbar component:', () => {
       expect(searchbar).toBeInTheDocument();       
     })
 
-    // Tests integration of Navbar and FilterForm components:
     test('filter form appears after the filter buttton is clicked:', () => {
       renderWithProviders(<Navbar />)
       const filterButton = screen.getByRole('button', { name: /filter/i });
@@ -106,5 +98,25 @@ describe('Navbar component:', () => {
     };
     expect(actualState).toEqual(expectedState);    
     }) 
+
+    test('initial state is set correctly after the Navbar is rendered:', async () => {
+      const {store} = renderWithProviders(<Navbar />);
+      const actualState = store.getState();
+      const expectedState = {
+        posts: {
+            list: [],
+            status: 'loading',
+            subreddit: 'r/hiking',
+            listing: 'hot',
+            limit: 50,
+            timeframe: 'week',
+            searchTerm: null,
+            searchbar: false,
+            filter: false
+      }
+    };
+    expect(actualState).toEqual(expectedState);    
+    }) 
+  // ******Need to write a test for click of logoIcon, and getPosts async thunk is correctly called with correct URL
   })  
 })
