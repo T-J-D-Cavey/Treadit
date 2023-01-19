@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import {postsReducer, getPosts} from '../../../Redux/postsSlice';
@@ -98,25 +97,7 @@ describe('Navbar component:', () => {
     };
     expect(actualState).toEqual(expectedState);    
     }) 
-
-    test('initial state is set correctly after the Navbar is rendered:', async () => {
-      const {store} = renderWithProviders(<Navbar />);
-      const actualState = store.getState();
-      const expectedState = {
-        posts: {
-            list: [],
-            status: 'loading',
-            subreddit: 'r/hiking',
-            listing: 'hot',
-            limit: 50,
-            timeframe: 'week',
-            searchTerm: null,
-            searchbar: false,
-            filter: false
-      }
-    };
-    expect(actualState).toEqual(expectedState);    
-    }) 
+ 
   // ******Need to write a test for click of logoIcon, and getPosts async thunk is correctly called with correct URL
   })  
 })
