@@ -257,6 +257,7 @@ p, span {
     overflow: hidden; 
     text-align: center;
     box-shadow: 0 1px 5px  lightgray;
+    border-radius: 10px;
 }
 
 .gridItem a {
@@ -332,6 +333,7 @@ p, span {
     .gridContainer {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        grid-template-rows: masonry;
         gap: 1.5rem;
     }
 }

@@ -1,12 +1,10 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
-import {postsReducer, getPosts} from '../../../Redux/postsSlice';
-import {store} from '../../../Redux/store';
+import { screen, fireEvent } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import {App} from '../../../App';
 import {Navbar} from '../Navbar';
 import {renderWithProviders} from '../../../utils/testUtils';
+import userEvent from '@testing-library/user-event';
 
 describe('Navbar component:', () => {
   describe('Unit tests:', () => {
@@ -22,7 +20,6 @@ describe('Navbar component:', () => {
       expect(filterButton).toBeInTheDocument()
     });
 
-    // The test below was failing till it was made async / await:
     test('renders an image element with an alt text of logo', async () => {
       renderWithProviders(<Navbar />)
       const logoIcon = await screen.findByAltText('logo');
@@ -97,7 +94,16 @@ describe('Navbar component:', () => {
     };
     expect(actualState).toEqual(expectedState);    
     }) 
- 
-  // ******Need to write a test for click of logoIcon, and getPosts async thunk is correctly called with correct URL
+
+    test('Logo icon calls getPosts and loading page is rendered:', async () => {
+      const {store} = renderWithProviders(
+          <BrowserRouter>
+              <App />
+          </BrowserRouter>);
+      const logoIcon = await screen.findByAltText(/logo/i);
+      userEvent.click(logoIcon);
+      const LoadingImage = await screen.findByAltText(/loading/i);
+      expect(LoadingImage).toBeVisible();
+    })
   })  
 })
