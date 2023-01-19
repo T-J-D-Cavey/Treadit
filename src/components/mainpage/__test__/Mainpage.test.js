@@ -8,7 +8,7 @@ import {renderWithProviders} from '../../../utils/testUtils';
 import { findAllInRenderedTree } from 'react-dom/test-utils';
 import {getPosts} from '../../../Redux/postsSlice';
 
-describe('Mainpage component:', () => {
+describe('App / Mainpage component:', () => {
     describe('Unit tests:', () => {
 // ******Unit tests haven't been written yet.
     });
@@ -21,8 +21,7 @@ describe('Mainpage component:', () => {
         //     console.log(spinner);
         //     expect(spinner).toBeVisible();
         // })
-        test('A post is rended after mainpage is rendered:', async () => {
-            // getPosts('https://www.reddit.com/r/hiking/hot.json?limit=50&t=week')
+        test('A post is fetched and the list state is updated with response.data.children.data', async () => {
             const {store} = renderWithProviders(
                 <BrowserRouter>
                     <App />
@@ -30,7 +29,15 @@ describe('Mainpage component:', () => {
             const headerElement = await screen.findByText(/testTitle/i);
             const state = store.getState();
             const list = state.posts.list;
-            console.log(list)
+            expect(list.length).toBeGreaterThan(0);
+            expect(list.length).toBe(1);
+        })
+        test('A post is rendered based on data stored in list state:', async () => {
+            renderWithProviders(
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>);
+            const headerElement = await screen.findByText(/testTitle/i);
             expect(headerElement).toBeInTheDocument();
         })
 

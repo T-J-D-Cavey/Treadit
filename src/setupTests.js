@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 import {server} from './mocks/server';
 
-beforeAll(() => server.listen());
+// Uncomment below and replace the beforeAll above to debug MSW get request / responses:
+beforeAll(() => server.listen({
+    onUnhandledRequest: 'error'
+}));
 
 afterEach(() => server.resetHandlers());
 

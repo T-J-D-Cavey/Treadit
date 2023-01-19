@@ -58,7 +58,7 @@ const postsSlice = createSlice({
             state.status = 'success'
             })
             .addCase(getPosts.rejected, (state) => {
-            state.status = 'failed'
+            state.status = 'failed';
             })
         },
 });
