@@ -5,7 +5,7 @@ import { Mainpage } from './components/mainpage/Mainpage';
 import { Notfound } from './components/Notfound';
 import './App.css';
 
-function App() {
+export function App() {
   return ( 
     <div>
       <Navbar />
