@@ -10,24 +10,36 @@ Treadit is a single-page-application (SPA) project showcasing React, Redux, asyn
 
 ### Technologies used
 
-- React js library,
-- React Router v6, 
-- Redux js library (including React-Redux and @reduxjs/toolkit) to manage all state, 
-- Jest and Enzyme testing libraries for a demonstration of unit, integration and end to end testing (to be completed), 
+- React / Jest testing library,
+- Enzyme testing library (tbc), 
+- React Router DOM / React DOM, 
+- Redux js library (including React-Redux and @reduxjs/toolkit), 
+- Mock Server Worker
 - CSS, 
 - HTML, 
+- Reddit.json API,
 - NPM,
 - Git/Github, 
 - VScode to write the code,
 - Netlify to deploy the site. 
 
+### Features:
+
+- Loads 'hot' since the last week /r/hiking reddit posts when the site is first visited,
+- Posts show the title of the post, the author (linking to their Reddit profile), the photo, desciption, how many comments and upvotes,
+- Posts will later allow embeded video content to show,
+- Navigation bar offers a 'search' and 'filter' option to tailour the posts the app displays,
+- The best hiking related subreddits are included in the filter options,
+- Site is responsive to any screensize and any modern browser,
+- Slick design and fast loading times,
+
 ### How is the reddit data obtained?
 
-This web app uses the Reddit .JSON API to retrieve reddit posts. This API doesn't require authentication or tokens. Data is obtained using a GET request with a URL that includes ".json". One limitation of this API is that search results use /search in the URL instead of /listing, and the results ignore the subreddit specified in the URL. 
+This web app uses the Reddit .JSON API to retrieve reddit posts. This API doesn't require authentication or tokens. Data is obtained using a GET request with a URL that includes ".json". 
 
 ### What testing coverage is there? (working progress)
 
-This project is partly a demonstration of writing js tests. It uses '@testing-library/react', 'testing-library/user-event', '@testing-library/jest-dom'. The Jest and Enzyme js library.
+This project is partly a demonstration of writing js tests. It uses '@testing-library/react', 'testing-library/user-event', '@testing-library/jest-dom'. The Jest and Enzyme js library and more.
 
 It has some unit tests of vital features and functions, some integration tests of the most important features, and will have end to end testing. I do not intend to provide 100% unit testing coverage as I don't deem it to be worth my time at this point. A demonstration of writing good tests is partly the purpose of this project. This can be demonstrated without 100% coverage.  
 
