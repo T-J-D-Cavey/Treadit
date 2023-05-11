@@ -23,3 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("getFilterButton", () => {
+    cy.get('.nav').find('button[aria-label="filter"]')
+})
+
+Cypress.Commands.add("getSearchButton", () => {
+    cy.get('.nav').find('button[aria-label="search"]')
+})
