@@ -58,18 +58,22 @@ describe('hero banner and posts feed tests', () => {
     cy.contains('p', 'Find the best hiking reddit posts').should('be.visible');
   })
 
-  it('should show at least one post', () => {
+  it('should show at least one post using a real request and response', () => {
     cy.get('.gridItem').should('be.visible');
     cy.get('.postSection').find('p').should('be.visible');
     cy.get('h3').find('a').should('be.visible');
     cy.get('img').get('.commentIcon').should('be.visible');
 
   })
-})
 
-// describe('posts feed tests', () => {
-//   beforeEach(() => {
-//     cy.visit('/');
-//     cy.wait(3000);
-//   });
-// })
+  it('should render the content sent from our mock response', () => {
+    cy.intercept('GET', 'https://www.reddit.com/r/hiking/hot.json?limit=50&t=week', {
+      fixture: "mockResponse.json"
+    });
+    cy.contains('span', 'testAuthor').should('be.visible');
+    cy.contains('h3', 'testTitle').should('be.visible');
+    cy.contains('p', 'test description')
+    cy.contains('span', '4').should('be.visible');
+    cy.contains('span', '10').should('be.visible');
+  })
+})
