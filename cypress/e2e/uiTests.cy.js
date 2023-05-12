@@ -25,6 +25,7 @@ describe('navbar tests', () => {
     cy.get('.nav').find('.flex');
     cy.get('.nav').find('.navflex');
     cy.get('.nav').find('[class="flex navflex"]');
+    cy.get('div').find('[class="logoIcon"]');
 
   })
 
