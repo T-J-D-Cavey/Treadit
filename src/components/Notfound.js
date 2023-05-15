@@ -18,7 +18,7 @@ export function Notfound() {
     return (
         <div>
             <h3 className='centered'>Page not found</h3>
-            <p className='centered'>Redirecing you in a few moments</p>
+            <p className='centered'>Redirecting you in a few moments</p>
             <div className='flex'>
                 <img className='spinnerContainer' src={redditIcon} alt=''/>  
             </div>  
