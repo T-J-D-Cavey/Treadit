@@ -10,8 +10,9 @@ Treadit is a single-page-application (SPA) project showcasing React, Redux, asyn
 
 ### Technologies used
 
-- React / Jest testing library,
-- Enzyme testing library (tbc), 
+- React framework,
+- Cypress E2E and component testing library
+- Jest testing library,
 - React Router DOM / React DOM, 
 - Redux js library (including React-Redux and @reduxjs/toolkit), 
 - Mock Server Worker
