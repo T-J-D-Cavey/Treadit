@@ -34,10 +34,26 @@ describe('State / store tests', () => {
         cy.get('.filterForm').submit();
 
         cy.window().its('store').invoke('getState').then((state) => {
+            expect(state.posts.status).to.equal('loading');
             expect(state.posts.subreddit).to.equal('r/First_Aid');
             expect(state.posts.listing).to.equal('new');
             expect(state.posts.limit).to.equal('10');
             expect(state.posts.timeframe).to.equal('month');
+        })
+    })
+
+    it('should have search inputs that change the state when submitted', () => {
+        cy.getSearchButton().click();
+        cy.get('input[placeholder="search..."]').type('testing this with Cypress');
+        cy.get('select[id="limit"]').select('100');
+        cy.get('select[id="timeframe"]').select('year');
+        cy.get('.filterForm').submit();
+
+        cy.window().its('store').invoke('getState').then((state) => {
+            expect(state.posts.status).to.equal('loading');
+            expect(state.posts.searchTerm).to.equal('testing%20this%20with%20Cypress');
+            expect(state.posts.limit).to.equal('100');
+            expect(state.posts.timeframe).to.equal('year');
         })
     })
 
