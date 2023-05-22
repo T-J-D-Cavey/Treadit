@@ -15,7 +15,7 @@ import { getPosts } from '../../src/Redux/postsSlice';
         // to give insight into initial state. This is not the app's store so changes in state won't be picked up:
         const state = store.getState();
         const URL = 'https://www.reddit.com/r/hiking/hot.json?limit=50&t=week';
-        it('playground', () => {
+        it('should have responsive inputs', () => {
             cy.intercept('GET', URL, {
                 fixture: "mockResponse.json"
             }).as('getPosts')
