@@ -1,3 +1,5 @@
+/// <reference types='cypress'/>
+
 import { FilterForm } from '../../src/components/navbar/FilterForm';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
