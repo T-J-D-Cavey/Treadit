@@ -1,10 +1,6 @@
 /// <reference types='cypress'/>
 
-import { createResponseComposition } from "msw";
-
 describe('State / store tests', () => {
-
-    
     beforeEach(() => {
         cy.visit('/');
     })

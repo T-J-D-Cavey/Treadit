@@ -30,8 +30,5 @@ import { getPosts } from '../../src/Redux/postsSlice';
             cy.get('#listing').select('hot').should('have.value', 'hot');
             cy.get('#limit').select('10').should('have.value', '10');
             cy.get('#timeframe').select('day').should('have.value', 'day');
-
-            // Submit the form
-            // cy.get('.filterForm').submit();
     })
   })
