@@ -24,9 +24,19 @@ describe('Mainpage.cy.js', () => {
             </Provider>
             )
         store.dispatch(getPosts(URL))
-        cy.contains('h1', 'Treadit').should('be.visible').and('have.class', 'title').and('have.css', 'font-family', '"Seymour One", sans-serif');
-        cy.get('img[class="titleBackground"]').should('be.visible');
-        cy.contains('p', 'Find the best hiking reddit posts').should('be.visible');
+        cy.get('div[class="flex intro"]').find('h1').should('exist');
+        cy.get('div[class="flex intro"]').find('img').should('exist');
+        cy.get('div[class="flex intro"]').find('p').should('exist');
+        // An example of how to test for element type, content, class and css attributes:
+        cy.contains('h1', 'Treadit').should('be.visible')
+        .and('have.class', 'title')
+        .and('have.css', 'font-family', '"Seymour One", sans-serif');
+        cy.get('img[class="titleBackground"]').should('be.visible')
+        .and('have.attr', 'src', '/__cypress/src/static/media/mountainTitleIcon.84253c9262faff3b81c3cb4c70fd37f5.svg')
+        .and('have.attr', 'alt', 'mountain')
+        .and('have.css', 'z-index', '-1');
+        cy.contains('p', 'Find the best hiking reddit posts').should('be.visible')
+        .and('have.css', 'font-weight', '600')
 
   })
 })
