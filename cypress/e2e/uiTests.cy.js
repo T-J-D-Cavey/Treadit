@@ -80,5 +80,14 @@ describe('hero banner and posts feed tests', () => {
     cy.contains('span', '10').should('be.visible');
   })
 
-  // Need to write a test for a 404 response and the page not found page being rendered
+  const URL = 'https://www.reddit.com/r/hiking/search.json?limit=50&t=week&q=test%20of%20the%20searchbar%20box';
+  it('should render the PageNotFound component when the GET request response has a 404 status', () => {
+    cy.intercept('GET',  URL, {statusCode: 404}).as('getPosts');
+    cy.getSearchButton().click();
+    cy.get('input[placeholder="search..."]').type('test of the searchbar box');
+    cy.contains('button', 'Submit').click();
+    cy.wait('@getPosts');
+    cy.contains('h3', 'Failed to load content.').should('be.visible')
+    .and('have.class', 'centered')
+  })
 })
