@@ -1,3 +1,5 @@
+/// <reference types='cypress'/>
+
 import {Mainpage} from '../../src/components/mainpage/Mainpage';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
@@ -27,7 +29,7 @@ describe('Mainpage.cy.js', () => {
         cy.get('div[class="flex intro"]').find('h1').should('exist');
         cy.get('div[class="flex intro"]').find('img').should('exist');
         cy.get('div[class="flex intro"]').find('p').should('exist');
-        // An example of how to test for element type, content, class and css attributes:
+        // An example of how to test for element type, content, attributes and css styles:
         cy.contains('h1', 'Treadit').should('be.visible')
         .and('have.class', 'title')
         .and('have.css', 'font-family', '"Seymour One", sans-serif');
@@ -37,6 +39,5 @@ describe('Mainpage.cy.js', () => {
         .and('have.css', 'z-index', '-1');
         cy.contains('p', 'Find the best hiking reddit posts').should('be.visible')
         .and('have.css', 'font-weight', '600')
-
   })
 })
