@@ -79,4 +79,6 @@ describe('hero banner and posts feed tests', () => {
     cy.contains('span', '4').should('be.visible');
     cy.contains('span', '10').should('be.visible');
   })
+
+  // Need to write a test for a 404 response and the page not found page being rendered
 })
