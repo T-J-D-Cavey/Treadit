@@ -23,5 +23,6 @@ import { getPosts } from '../../src/Redux/postsSlice';
                 </Provider>)
             store.dispatch(getPosts(URL))
         // I need to write tests here:
+        // I haven't written tests as these will be similar to existing tests demoed in the filterform component tests.
     })
   })
